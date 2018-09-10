@@ -3,12 +3,9 @@ void setup()
   size(768,432);
   background(0,100,182);
 }
-void draw() 
+void drawFirstName()
 {
-  background(0,100,182);
-  stroke(255,255,255);
-  strokeWeight(3.4);
-  
+  // Jesper
   // J
   arc(102,156,88,156,0.3,2.5);
   line(141,18,141,190);
@@ -33,8 +30,50 @@ void draw()
   line(547,109,548,247);
   
   noFill();
+}
+
+void drawLastName()
+{
+  //Uddefors
   
+  //U 
+  arc(100,318,76,146,-0.4,3.5);
   
+  //d
+  arc(190,340,49,65,1.5,4.8);
+  line(196,255,195,371);
+ 
+  //d
+  arc(234,340,49,65,1.5,4.8);
+  line(241,256,238,371);
   
+  //e
+  arc(281,340,49,65,1.1,6.1);
+  line(261,330,306,334);
+   
+  //f
+  arc(333,305,23,40,3.1,6.1);
+  line(321,303,321,374);
+  line(340,326,313,324);
   
+  //o
+  ellipse(368,347,38,39);
+  
+  //r
+  arc(417,332,28,40,3.1,6.1);
+  line(402,305,401,374);
+  
+  //s
+  arc(458,322,29,33,1.6,5.7);
+  arc(456,355,23,32,4.7,9.3);
+}
+
+void draw() 
+{
+  background(0,100,182);
+  stroke(255,255,255);
+  strokeWeight(3.4);
+  
+  drawFirstName();
+  drawLastName();  
 }
