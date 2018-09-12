@@ -17,6 +17,7 @@ void draw()
 class ParabolicCurve {
 
   int position, axis1, axis2, numberOfLines;
+
   public ParabolicCurve (int pos,int a1,int a2,int nuOfLi) {
     position = pos;
     axis1 = a1; // height
