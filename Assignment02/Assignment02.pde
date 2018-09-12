@@ -1,3 +1,4 @@
+
 void setup()
 { 
   size(640,640);
@@ -8,17 +9,33 @@ void setup()
 
 void draw()
 {
+  ParabolicCurve myCurve = new ParabolicCurve(0,width,height,20);
+  myCurve.update();
+}
 
-  for(int i = 0; i < height; i++)
-  {
-    int position = 10 * i;
-    
-    line(0,position,position,height);
-    stroke(200);
-    if( i%3 == 0)
-    {
-      stroke(0);
-    }
-    
+class ParabolicCurve {
+
+  int position, axis1, axis2, numberOfLines;
+  public ParabolicCurve (int pos,int a1,int a2,int nuOfLi) {
+    position = pos;
+    axis1 = a1; // height
+    axis2 = a2; // width
+    numberOfLines = nuOfLi;
+
   }
+  public void update()
+  {
+
+    for(int i = 0; i < numberOfLines; i++)
+    {   
+      line(position, i*(axis1/numberOfLines), i*(axis2/numberOfLines),axis2);
+      stroke(199);
+      if( i%3 == 0)
+      {
+        stroke(0);
+      }
+    
+    }
+  }
+
 }
