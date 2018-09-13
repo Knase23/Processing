@@ -1,5 +1,5 @@
-int frame = 0;
-float multiplier = 0.04;
+float multiplier = 0.0010;
+float multiplier2 = 0.0010;
 void setup() {
 	size(640,480);
 	strokeWeight(5);
@@ -15,16 +15,23 @@ void draw() {
 	
 
 	pointsEvenCircle(offsetX,offsetY,numberOfPoints);
-	frame++;
 }
 void pointsEvenCircle(float offX, float offY,int numberOfPoints)
 {
 	for (int i = 0; i < numberOfPoints; ++i) {
-		float animate = frame * multiplier;
+		
+		float animate = frameCount * multiplier;
 		float distance = TWO_PI * i /numberOfPoints;
-		float x = (cos(distance + animate)*100) + offX;
-		float y = (sin(distance + animate)*100) + offY;
+		
+		float x = (cos(distance + animate)*(100-(10*multiplier2 % 200)) + offX) ;
+		float y = (sin(distance + animate)*(100-(10*multiplier2 % 200)) + offY);
 		point(x, y);
-		stroke((sin(distance +animate)*255) %256, (cos(distance +animate)*255)%256, (-sin(distance +animate)*255)%256);
+		
+		multiplier2+=0.0001;
+		float colorAnimate = frameCount * multiplier;
+		float red =(cos(distance + colorAnimate)*255);
+		float green = (sin(distance + colorAnimate)*255);
+		float blue = (-cos(distance + colorAnimate)*255);
+		stroke(red, green,blue);
 	}
 }

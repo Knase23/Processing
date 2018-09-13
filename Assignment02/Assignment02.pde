@@ -2,7 +2,7 @@
 void setup()
 { 
   size(640,640);
-  background(0);
+  background(255);
   
   
 }
@@ -16,9 +16,9 @@ void draw()
 
 class ParabolicCurve {
 
-  int position, axis1, axis2, numberOfLines;
+  float position, axis1, axis2, numberOfLines;
 
-  public ParabolicCurve (int pos,int a1,int a2,int nuOfLi) {
+  public ParabolicCurve (float pos,float a1,float a2,float nuOfLi) {
     position = pos;
     axis1 = a1; // height
     axis2 = a2; // width
@@ -29,7 +29,7 @@ class ParabolicCurve {
 
     for(int i = 0; i < numberOfLines; i++)
     {   
-      line(position, i*(axis1/numberOfLines), i*(axis2/numberOfLines),axis2);
+      line(position, i * axis1/numberOfLines, i * axis2/numberOfLines ,axis2);
       stroke(199);
       if( i%3 == 0)
       {
@@ -39,6 +39,7 @@ class ParabolicCurve {
     }
   }
 }
+
 void positionParabolicCurve(int xpos, int ypos, int distanceBetween)
 {
   for (int i = 0; i < ypos/distanceBetween; ++i) {
