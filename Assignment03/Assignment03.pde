@@ -17,8 +17,8 @@ void draw() {
 	int offsetY = 240;
 
 	for (int i = 0; i < numberOfPoints; ++i) {
-		float x = i * distanceBetweenPointsX;
-		float y = sin(i + (frame*multiplier)) * distanceBetweenPointsY;
+		float x = TWO_PI * i / numberOfPoints *100;
+		float y = sin(TWO_PI * i / numberOfPoints + (frame*multiplier)) *100;
 		
 		point(x + offsetX , y + offsetY);
 
