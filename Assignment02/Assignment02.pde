@@ -2,7 +2,7 @@
 void setup()
 { 
   size(640,640);
-  background(255);
+  background(0);
   
   
 }
