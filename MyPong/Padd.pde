@@ -4,12 +4,14 @@ public class Padd  {
 		sideX = side;
 		position = startPos;
 	}
-	float sideX;
-	float position;
+	public float sideX;
+	public float position;
 	void update()
 	{
+		fill(255);
 		rect(sideX, position, 5, paddSize);
 		stroke(255, 255, 255);
+
 	}
 	void up()
 	{
