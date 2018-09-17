@@ -28,7 +28,7 @@ void pointsEvenCircle(float offX, float offY,int numberOfPoints)
 		point(x, y);
 		
 		multiplier2+=0.0001;
-		float colorAnimate = frameCount * multiplier;
+		float colorAnimate = frameCount * multiplier2;
 		float red =(cos(distance + colorAnimate)*255);
 		float green = (sin(distance + colorAnimate)*255);
 		float blue = (-cos(distance + colorAnimate)*255);
