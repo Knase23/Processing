@@ -1,12 +1,12 @@
 float deltaTime;
 float time;
-int numberOfPlanets = 100;
-Planet[] planets = new Planet[numberOfPlanets];
+int numberOfBalls = 1000;
+Ball[] balls = new Ball[numberOfBalls];
 void setup() {
 	size(512, 512);
 	frameRate(60);
-	for (int i = 0; i < numberOfPlanets; ++i) {
-		planets[i] = new Planet();
+	for (int i = 0; i < numberOfBalls; ++i) {
+		balls[i] = new Ball();
 	}
 }
 
@@ -17,8 +17,8 @@ void draw() {
 	
 	if (focused) {
 		background(255);
-		for (int i = 0; i < numberOfPlanets; ++i) {
-		planets[i].update();
+		for (int i = 0; i < numberOfBalls; ++i) {
+		balls[i].update();
 		}	
 	}
 	
@@ -26,26 +26,27 @@ void draw() {
 	time = currentTime;
 }
 
-public class Planet {
+public class Ball {
 	PVector position, direction;
 	float velocity, acceleration;
 	color c;
-	public Planet () {
+	public Ball () {
 		position = new PVector(width/2,height/2);
 		c = color(random(0, 255), random(0, 255), random(0, 255));
 		direction = new PVector(random(-1.0, 1.0),random(-1.0, 1.0));
+		//direction.normalize();
 		velocity = 5;
 		acceleration = 1.0;
 	}
 
 	public void update() {
 		this.move();
-		velocity += (acceleration );
+		velocity += acceleration;
 		
 		fill(c);
 		ellipse(position.x, position.y, 10, 10);		
 		
-		if(position.dist(new PVector(width/2,height/2)) > 5 * numberOfPlanets)
+		if(position.dist(new PVector(width/2,height/2)) > 200)
 		{
 			this.changeDirection();
 			this.move();
