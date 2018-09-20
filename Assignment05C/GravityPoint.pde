@@ -1,11 +1,10 @@
 public class GravityPoint {
 	PVector position;
-	float gravitationalPull, mass;
+	float mass;
 	color c;
 	public GravityPoint () {
 		position = new PVector(300,300);
-		gravitationalPull = 1.5;
-		mass = 100;
+		mass = 0;
 		c = color(255,255,255);
 	}
 	public void update() {
@@ -24,7 +23,7 @@ public class GravityPoint {
 		diffV.div(distance);
 		diffV.mult(planet.mass);
 		diffV.mult(mass);
-		diffV.mult(gravitationalPull);
+		diffV.mult(gravityConstant);
 		diffV.div(distance);
 		diffV.div(distance);
 		
