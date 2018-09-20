@@ -25,9 +25,10 @@ void draw() {
 		}
 		g.setAcceleration(p[i]);
 		p[i].update();
-
+		p[i].draw();
 	}
 	g.update();
+	g.draw();
 
 
 	time = currentTime;
