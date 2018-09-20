@@ -108,6 +108,7 @@ public class GravityPoint {
 		diffV.div(distance);
 		diffV.mult(planet.mass);
 		diffV.mult(mass);
+		diffV.mult(gravitationalPull);
 		diffV.div(distance);
 		diffV.div(distance);
 		
