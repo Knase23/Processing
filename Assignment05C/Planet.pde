@@ -27,6 +27,7 @@ public class Planet {
 		move();
 		moveIfOusideOfScreen();
 	}
+	
 	public void draw() {
 		fill(c);
 		ellipse(position.x, position.y, 10, 10);
