@@ -1,10 +1,15 @@
 float deltaTime;
 float time;
-Planet p = new Planet();
+int numberOfPlanets = 10;
+
+Planet[] p = new Planet[numberOfPlanets];
 GravityPoint g = new GravityPoint();
 
 void setup() {
 	size(600,600);
+	for (int i = 0; i < numberOfPlanets; ++i) {
+		p[i] = new Planet();
+	}
 }
 
 void draw() {
@@ -12,8 +17,16 @@ void draw() {
 	deltaTime = currentTime - time;
 	deltaTime *= 0.001f;
 	background(255);
+	for (int i = 0; i < numberOfPlanets; ++i) {
+		
+		for (int j = 0; j < numberOfPlanets; ++j) {
+			if(i != j)
+				accelerationBetweenPlanets(p[i], p[j]);	
+		}
+		g.setAcceleration(p[i]);
+		p[i].update();
 
-	p.update(g);
+	}
 	g.update();
 
 
@@ -25,27 +38,17 @@ public class Planet {
 	float mass;
 	color c;
 	public Planet () {
-		velocity = new PVector(1,10);
+		velocity = new PVector(0,0);
 		acceleration = new PVector(0,0);
-		c = color(random(255),random(255),random(255));
-		position = new PVector(200,250);
-		mass = 10;
+		c = color(random(0,255),random(0,255),random(0,255));
+		position = new PVector(random(10, width-10),random(10,height-10));
+		mass = 100;
 	}
-	public void update(GravityPoint gravPull)
+	public void update()
 	{
-		float distance = position.dist(gravPull.position);
-		PVector diffV = PVector.sub(gravPull.position,position);
-
-		diffV.div(distance);
-		diffV.mult(mass);
-		diffV.mult(gravPull.mass);
-		diffV.div(distance);
-		diffV.div(distance);
-		acceleration.add(diffV);
-		acceleration.mult(0.6f);
-
 		velocity.add(acceleration);
 		move();
+		fill(c);
 		ellipse(position.x, position.y, 10, 10);
 
 		if(position.x > width)
@@ -87,20 +90,46 @@ public class GravityPoint {
 		position = new PVector(300,300);
 		gravitationalPull = 1.5;
 		mass = 100;
-		c = color(0,0,0);
-	}
-	public float gravFalloff(PVector affectedObject, float mass) {
-		
-		float distance = position.dist(affectedObject);
-		float r2 = pow(distance, 2);
-		return gravitationalPull * ((this.mass * mass)/r2);
+		c = color(255,255,255);
 	}
 	public void update() {
 		position.x = mouseX;
 		position.y = mouseY;
 
-		stroke(c);
+		
+		fill(c);
 		ellipse(position.x, position.y, 10, 10);
 	}
+	public void setAcceleration(Planet planet)
+	{
+		float distance = planet.position.dist(position);
+		PVector diffV = PVector.sub(position,planet.position);
 
+		diffV.div(distance);
+		diffV.mult(planet.mass);
+		diffV.mult(mass);
+		diffV.div(distance);
+		diffV.div(distance);
+		
+		planet.acceleration.add(diffV);
+		planet.acceleration.mult(0.6f);
+	}
+
+}
+public void accelerationBetweenPlanets(Planet p1, Planet p2) {
+		
+		float distance = p1.position.dist(p2.position);
+		PVector diffV = PVector.sub(p2.position,p1.position);
+
+		diffV.div(distance);
+		diffV.mult(p1.mass);
+		diffV.mult(p2.mass);
+		diffV.div(distance);
+		diffV.div(distance);
+		
+		p1.acceleration.add(diffV);
+		p1.acceleration.mult(0.6f);
+		
+		p2.acceleration.sub(diffV);
+		p2.acceleration.mult(0.6f);
 }
