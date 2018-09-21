@@ -28,7 +28,7 @@ public class GravityPoint {
 		diffV.div(distance);
 		
 		planet.acceleration.add(diffV);
-		planet.acceleration.mult(0.6f);
+		//planet.acceleration.mult(0.6f);
 	}
 
 }

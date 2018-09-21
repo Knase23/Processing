@@ -1,7 +1,7 @@
 float deltaTime;
 float time;
-int numberOfPlanets = 500;
-float gravityConstant =4;
+int numberOfPlanets = 3;
+float gravityConstant =1;
 
 Planet[] p = new Planet[numberOfPlanets];
 GravityPoint g = new GravityPoint();
@@ -19,11 +19,14 @@ void draw() {
 	deltaTime *= 0.001f;
 	background(255);
 	for (int i = 0; i < numberOfPlanets; ++i) {
-		
+		/*
 		for (int j = 0; j < numberOfPlanets; ++j) {
 			if(i != j){
-				if(p[i].mass > 0 || p[i].mass > 0 )
-				accelerationBetweenPlanets(p[i], p[j]);	
+				
+				if(p[i].mass > 0 || p[i].mass > 0 ){
+					accelerationBetweenPlanets(p[i], p[j]);	
+				}
+				
 				
 				if(p[i].radius > 100)
 				{
@@ -47,7 +50,7 @@ void draw() {
 					}
 									}
 			}
-		}
+		}*/
 		g.setAcceleration(p[i]);
 		p[i].update();
 	}
@@ -62,46 +65,10 @@ void draw() {
 	time = currentTime;
 	
 }
-public void accelerationBetweenPlanets(Planet p1, Planet p2) {
-		
-		float distance = p1.position.dist(p2.position);
-		PVector diffV = PVector.sub(p2.position,p1.position);
 
-		diffV.div(distance);
-		diffV.mult(p1.mass);
-		diffV.mult(p2.mass);
-		diffV.mult(gravityConstant);
-		diffV.div(distance);
-		diffV.div(distance);
-		
-		p1.acceleration.add(diffV);
-		p1.acceleration.mult(0.6f);
-		
-		p2.acceleration.sub(diffV);
-		p2.acceleration.mult(0.6f);
-}
-public boolean collision(PVector p1, float mass1 ,PVector p2, float mass2)
-{
 
-	if(mass1 < 0 || mass2 < 0)
-		return false;
-
-	float maxDistance  = mass1 + mass2;
-
-	if(abs(p1.x - p2.x) > maxDistance || abs(p1.y - p2.y) > maxDistance)
-	{
-		return false;
-	} 
-	else if (dist(p1.x,p1.y,p2.x,p2.y) > maxDistance) {
-		return false;	
-	}
-	else 
-	{
-		return true;
-	}
-}
 void mousePressed() {
-	g.mass = 1000;
+	g.mass = 100;
 }
 void mouseReleased() {
 	g.mass = 0;

@@ -21,8 +21,8 @@ public class Planet {
 		position = new PVector(x,y);
 		velocity = new PVector(0,0);
 		acceleration = new PVector(0,0);
-		mass = 10;
-		radius = 10;
+		mass = planetMass;
+		radius = startRadius;
 		c = color(random(0,255),random(0,255),random(0,255));
 	}
 	public void update()
@@ -39,8 +39,10 @@ public class Planet {
 		text(""+round(mass/startMass), position.x, position.y, (float)radius, (float)radius);
 	}
 	private void move() {
-		if(velocity.mag() > 100)
-			velocity.setMag(100);
+		
+		// Makes planets not to get sling shoted
+		// if(velocity.mag() > 100)
+		// 	velocity.setMag(100);
 
 		position.x += (velocity.x * deltaTime);
 		position.y += (velocity.y * deltaTime);	
