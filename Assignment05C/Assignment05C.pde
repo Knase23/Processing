@@ -68,7 +68,7 @@ void draw() {
 
 
 void mousePressed() {
-	g.mass = 100;
+	g.mass = 10;
 }
 void mouseReleased() {
 	g.mass = 0;
