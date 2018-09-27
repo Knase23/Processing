@@ -1,2 +1,7 @@
+#Ignores these directory
 */build-tmp
 */CircleIntersection/build-tmp
+
+#Ignore these files
+*.java
+*.class
