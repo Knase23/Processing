@@ -15,8 +15,8 @@ void draw()
     new LineCord(10 ,10,10,420),
     new LineCord(10,420,420,420),
     20,
-    new Color(0),
-    new Color(128));
+    new Color(180),
+    new Color(0));
   myCurve.update();
   //line(10,10,10,420);
   //line(10,420,420,420);

@@ -31,22 +31,22 @@ public class Character{
 		if(position.x > width)
 		{
 			position.x -= width;
-			velocity.mult(0.8f);
+			//velocity.mult(0.8f);
 
 		}
 		if(position.x < 0){
 			position.x += width;
-			velocity.mult(0.8f);
+			//velocity.mult(0.8f);
 
 		}
 		if(position.y > height){
 			position.y -= height;
-			velocity.mult(0.8f);
+			//velocity.mult(0.8f);
 
 		}
 		if(position.y < 0){
 			position.y += height;
-			velocity.mult(0.8f);
+			//velocity.mult(0.8f);
 
 		}
 		/*

@@ -17,7 +17,7 @@ void draw() {
 		cm.update();
 		cm.draw();
 	} else {
-		//background(255, 255, 255);
+		background(255, 255, 255);
 		cm.displayScore();
 	}
 	time = currentTime;

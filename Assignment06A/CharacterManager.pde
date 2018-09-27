@@ -64,7 +64,7 @@ public class CharacterManager {
 	public PVector findNearestHuman(int indexOfZombie) {
 		
 		int indexOfNearest = indexOfZombie;
-		float nearestDistance = 10000000 ;
+		float nearestDistance = 3e38;
 		float distance = 0;
 		for (int i = 0; i < numberOfCharacters; ++i) {
 			if(characters[i] instanceof Human)
@@ -91,7 +91,7 @@ boolean collision(PVector p1,float radius1, PVector p2,float radius2)
 		return false;
 	} 
 	else if (dist(p1.x,p1.y,p2.x,p2.y) > maxDistance) {
-	return false;	
+		return false;	
 	}
 	else 
 	{

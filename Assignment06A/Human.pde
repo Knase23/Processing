@@ -17,8 +17,8 @@ public class Human extends Character {
 		velocity.y = random(-1, 1);
 		velocity.setMag(speed);
 		
-		c = color(128, 0, 128);
-		radius = 20;
+		c = color(128 + random(100), 0+ random(25), 128 + random(50));
+		radius = 10 + random(5, 10);
 	}
 	void move()
 	{

@@ -20,18 +20,20 @@ void pointsEvenCircle(float offX, float offY,int numberOfPoints)
 {
 	for (int i = 0; i < numberOfPoints; ++i) {
 		
-		float animate = frameCount * multiplier;
+		float animate = 0* frameCount * multiplier;
 		float distance = TWO_PI * i /numberOfPoints;
 		
 		float x = (cos(distance + animate)*(100-(10*multiplier2 % 200)) + offX) ;
 		float y = (sin(distance + animate)*(100-(10*multiplier2 % 200)) + offY);
 		point(x, y);
 		
-		multiplier2+=0.0001;
-		float colorAnimate = frameCount * multiplier2;
-		float red =(cos(distance + colorAnimate)*255);
-		float green = (sin(distance + colorAnimate)*255);
-		float blue = (-cos(distance + colorAnimate)*255);
-		stroke(red, green,blue);
+		// multiplier2+=0.0001;
+		// float colorAnimate = frameCount * multiplier2;
+		// float red =(cos(distance + colorAnimate)*255);
+		// float green = (sin(distance + colorAnimate)*255);
+		// float blue = (-cos(distance + colorAnimate)*255);
+		// stroke(red, green,blue);
 	}
 }
+
+//Spiral Goes here. Almost the same but each dot is further away from the center. So change the distance is depended on what point we are on.
